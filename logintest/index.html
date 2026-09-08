@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>YouTube</title>
+  <!-- Roboto & Open Sans Font Imports -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+  <style>
+    html, body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      min-width: 100%;
+      font-size: 13px;
+      color: #404040;
+    }
+    
+    /* ================= LOGIN VIEW STYLES ================= */
+    .wrapper {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      padding-bottom: 50px;
+    }
+
+    .google-logo {
+      margin-bottom: 15px;
+    }
+
+    .heading-title {
+      font-family: 'Open Sans', arial, sans-serif;
+      font-size: 38px;
+      font-weight: 300;
+      color: #555;
+      margin: 0 0 10px 0;
+      text-align: center;
+      letter-spacing: -0.2px;
+    }
+
+    .sub-title {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .card {
+      background-color: #f7f7f7;
+      padding: 40px;
+      width: 360px;
+      border-radius: 2px;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .back-arrow {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      cursor: pointer;
+      padding: 5px;
+      display: block;
+    }
+
+    .back-arrow img {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+
+    .profile-img-wrapper {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 15px;
+      display: block;
+    }
+
+    .profile-img-wrapper img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .profile-email {
+      font-size: 14px;
+      font-weight: normal;
+      text-align: center;
+      margin: 0 0 20px 0;
+      color: #404040;
+      word-break: break-all;
+    }
+
+    input[type=email],
+    input[type=password] {
+      width: 100%;
+      height: 44px;
+      padding: 0 10px;
+      margin-bottom: 15px;
+      background: #fff;
+      border: 1px solid #d9d9d9;
+      border-top: 1px solid #c0c0c0;
+      box-sizing: border-box;
+      border-radius: 1px;
+      font-size: 15px;
+      color: #404040;
+    }
+
+    input[type=email]:focus,
+    input[type=password]:focus {
+      outline: none;
+      border: 1px solid #4d90fe;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .rc-button {
+      display: block;
+      width: 100%;
+      height: 36px;
+      line-height: 36px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 3px;
+      cursor: pointer;
+      border: 1px solid #3079ed;
+      color: #fff;
+      background-color: #4d90fe;
+      background-image: linear-gradient(top,#4d90fe,#4787ed);
+    }
+
+    .rc-button:hover {
+      border: 1px solid #2f5bb7;
+      background-color: #357ae8;
+    }
+
+    .password-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      font-size: 12px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      color: #555;
+      cursor: pointer;
+    }
+
+    .checkbox-label input {
+      margin: 0 5px 0 0;
+    }
+
+    .need-help-link {
+      text-align: right;
+    }
+
+    .need-help-link a,
+    .create-account,
+    .diff-account-link {
+      color: #427fed;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .need-help-link a:hover,
+    .create-account:hover,
+    .diff-account-link:hover {
+      text-decoration: underline;
+    }
+
+    .account-action-wrapper {
+      text-align: center;
+      margin: 25px 0 35px;
+    }
+
+    .one-google-footer {
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .one-google-footer p {
+      margin: 0 0 10px;
+    }
+
+    .logo-strip {
+      background: url('https://ssl.gstatic.com/accounts/ui/wlogostrip_230x17_2x.png') no-repeat center;
+      background-size: 230px 17px;
+      width: 230px;
+      height: 17px;
+      margin: 0 auto;
+    }
+
+    .footer-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 35px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #737373;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .footer-links a {
+      color: #737373;
+      text-decoration: none;
+      margin-right: 15px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .lang-chooser select {
+      font-size: 12px;
+      color: #404040;
+      border: 1px solid #d9d9d9;
+      padding: 2px 5px;
+      background: #fff;
+    }
+
+    /* ================= SIGNED IN PAGE STYLES (2016 YOUTUBE) ================= */
+    #signedInView {
+      background: #f1f1f1;
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    /* Top Nav Bar */
+    .yt-header {
+      background: #fff;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .yt-header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .yt-search-bar {
+      display: flex;
+      align-items: center;
+    }
+
+    .yt-search-bar input {
+      width: 400px;
+      height: 28px;
+      border: 1px solid #ccc;
+      padding: 0 8px;
+      font-size: 14px;
+      margin-bottom: 0;
+      border-radius: 2px 0 0 2px;
+    }
+
+    .yt-search-btn {
+      height: 30px;
+      width: 60px;
+      border: 1px solid #ccc;
+      border-left: none;
+      background: #f8f8f8;
+      cursor: pointer;
+      border-radius: 0 2px 2px 0;
+    }
+
+    .yt-header-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .corner-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    /* Main Channel / Video Layout */
+    .yt-container {
+      max-width: 1000px;
+      margin: 20px auto;
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      padding: 20px;
+    }
+
+    .channel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e8e8e8;
+      padding-bottom: 15px;
+    }
+
+    .channel-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .channel-pfp {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+
+    .channel-details h2 {
+      margin: 0 0 5px 0;
+      font-size: 18px;
+    }
+
+    .channel-details p {
+      margin: 0;
+      color: #767676;
+      font-size: 12px;
+    }
+
+    .subscribe-btn {
+      background: #cc181e;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: bold;
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .subscribe-btn.subscribed {
+      background: #eee;
+      color: #555;
+      border: 1px solid #ccc;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================= 1. LOGIN / SIGN IN VIEW ================= -->
+<div id="loginView" class="wrapper">
+  <!-- Google Logo -->
+  <div class="google-logo">
+    <img src="https://ssl.gstatic.com/images/branding/googlelogo/2x/googlelogo_color_112x36dp.png" alt="Google" width="112" height="36">
+  </div>
+
+  <h1 class="heading-title">One account. All of Google.</h1>
+  <div class="sub-title">Sign in to continue to YouTube</div>
+
+  <!-- Sign In Card -->
+  <div class="card">
+    
+    <!-- ARROW BUTTON -->
+    <a href="#" id="backBtn" class="back-arrow hidden" title="Back">
+      <img src="arrow.png" alt="Back Arrow" id="arrowImg">
+    </a>
+
+    <!-- PROFILE PICTURE PLACEHOLDERS -->
+    <div class="profile-img-wrapper">
+      <img src="gray_avatar.png" alt="Gray Profile Picture" id="grayPfp">
+      <img src="blue_avatar.png" alt="Blue Profile Picture" id="bluePfp" class="hidden">
+    </div>
+
+    <!-- Panel 1: Email -->
+    <div id="emailPanel">
+      <form id="emailForm">
+        <input type="email" id="Email" name="Email" placeholder="Enter your email" value="paquettej207@gmail.com" required autofocus>
+        <button type="submit" id="next" class="rc-button">Next</button>
+      </form>
+      <div class="need-help-link" style="margin-top: 12px;">
+        <a href="#">Need help?</a>
+      </div>
+    </div>
+
+    <!-- Panel 2: Password -->
+    <div id="passwordPanel" class="hidden">
+      <div id="displayEmail" class="profile-email">paquettej207@gmail.com</div>
+      <form id="passwordForm">
+        <input type="password" id="Passwd" name="Passwd" placeholder="Password" required>
+        <button type="submit" id="signIn" class="rc-button">Sign in</button>
+      </form>
+      <div class="password-options">
+        <label class="checkbox-label">
+          <input type="checkbox" checked> Stay signed in
+        </label>
+        <div class="need-help-link">
+          <a href="#">Forgot password?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Link Swaps -->
+  <div class="account-action-wrapper">
+    <a href="#" id="createAccountLink" class="create-account">Create account</a>
+    <a href="#" id="diffAccountLink" class="diff-account-link hidden">Sign in with a different account</a>
+  </div>
+
+  <div class="one-google-footer">
+    <p>One Google Account for everything Google</p>
+    <div class="logo-strip"></div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bar">
+    <div class="footer-links">
+      <a href="#">About Google</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Help</a>
+    </div>
+    <div class="lang-chooser">
+      <select>
+        <option selected>English (United States)</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 2. SIGNED IN YOUTUBE VIEW (#signedin) ================= -->
+<div id="signedInView" class="hidden">
+  <!-- YouTube Header -->
+  <header class="yt-header">
+    <div class="yt-header-left">
+      <span style="font-size:20px; font-weight:bold; color:#cc181e;">YouTube</span>
+      <div class="yt-search-bar">
+        <input type="text" placeholder="Search">
+        <button class="yt-search-btn">🔍</button>
+      </div>
+    </div>
+    <div class="yt-header-right">
+      <!-- Hidden by default: Top-right corner avatar -->
+      <img src="blue_avatar.png" id="cornerPfp" class="corner-avatar hidden" alt="Account Avatar">
+    </div>
+  </header>
+
+  <!-- YouTube Page Body -->
+  <div class="yt-container">
+    <div class="channel-header">
+      <div class="channel-info">
+        <img src="blue_avatar.png" class="channel-pfp" id="channelPfp" alt="Channel Image">
+        <div class="channel-details">
+          <h2>YouTube Spotlight</h2>
+          <p id="subCount">10,421,890 subscribers</p>
+        </div>
+      </div>
+
+      <!-- Hidden by default: Fake Subscribe Button -->
+      <button class="subscribe-btn hidden" id="subBtn">
+        <span>Subscribe</span>
+      </button>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center; color: #666;">
+      <h3>Welcome back! You are currently signed in.</h3>
+      <p id="userEmailDisplay"></p>
+      <p><a href="#" id="signOutBtn" style="color: #427fed;">Sign out</a></p>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var loginView = document.getElementById('loginView');
+    var signedInView = document.getElementById('signedInView');
+
+    var emailPanel = document.getElementById('emailPanel');
+    var passwordPanel = document.getElementById('passwordPanel');
+    var backBtn = document.getElementById('backBtn');
+    
+    var grayPfp = document.getElementById('grayPfp');
+    var bluePfp = document.getElementById('bluePfp');
+    var cornerPfp = document.getElementById('cornerPfp');
+    var channelPfp = document.getElementById('channelPfp');
+
+    var emailInput = document.getElementById('Email');
+    var passwdInput = document.getElementById('Passwd');
+    var displayEmail = document.getElementById('displayEmail');
+    var userEmailDisplay = document.getElementById('userEmailDisplay');
+    
+    var emailForm = document.getElementById('emailForm');
+    var passwordForm = document.getElementById('passwordForm');
+    var createAccountLink = document.getElementById('createAccountLink');
+    var diffAccountLink = document.getElementById('diffAccountLink');
+
+    var subBtn = document.getElementById('subBtn');
+    var subCount = document.getElementById('subCount');
+    var signOutBtn = document.getElementById('signOutBtn');
+
+    var isSubscribed = false;
+
+    // View router function checking session state and location hash
+    function handleRouting() {
+      var isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+      if (window.location.hash === '#signedin') {
+        // Force back to sign-in screen if not logged in
+        if (!isLoggedIn) {
+          window.location.hash = '';
+          return;
+        }
+
+        // Show dashboard
+        loginView.classList.add('hidden');
+        signedInView.classList.remove('hidden');
+
+        // Reveal the profile picture and fake subscribe button ONLY now
+        cornerPfp.classList.remove('hidden');
+        subBtn.classList.remove('hidden');
+
+        var savedPfp = localStorage.getItem('youtubePfp') || 'blue_avatar.png';
+        var savedEmail = localStorage.getItem('userEmail') || emailInput.value;
+
+        cornerPfp.src = savedPfp;
+        channelPfp.src = savedPfp;
+        userEmailDisplay.textContent = "Signed in as: " + savedEmail;
+      } else {
+        // Show login form, hide signed-in components
+        signedInView.classList.add('hidden');
+        loginView.classList.remove('hidden');
+
+        cornerPfp.classList.add('hidden');
+        subBtn.classList.add('hidden');
+
+        if (window.location.hash === '#password') {
+          showPasswordStep();
+        } else {
+          showEmailStep();
+        }
+      }
+    }
+
+    function showPasswordStep() {
+      var val = emailInput.value.trim();
+      if (!val) {
+        emailInput.focus();
+        return;
+      }
+
+      displayEmail.textContent = val;
+      emailPanel.classList.add('hidden');
+      passwordPanel.classList.remove('hidden');
+      backBtn.classList.remove('hidden');
+
+      grayPfp.classList.add('hidden');
+      bluePfp.classList.remove('hidden');
+
+      createAccountLink.classList.add('hidden');
+      diffAccountLink.classList.remove('hidden');
+
+      if (window.location.hash !== '#password' && window.location.hash !== '#signedin') {
+        window.location.hash = 'password';
+      }
+
+      passwdInput.focus();
+    }
+
+    function showEmailStep() {
+      passwordPanel.classList.add('hidden');
+      emailPanel.classList.remove('hidden');
+      backBtn.classList.add('hidden');
+
+      bluePfp.classList.add('hidden');
+      grayPfp.classList.remove('hidden');
+
+      diffAccountLink.classList.add('hidden');
+      createAccountLink.classList.remove('hidden');
+
+      emailInput.focus();
+    }
+
+    emailForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      showPasswordStep();
+    });
+
+    // Submitting Password sets logged-in state and navigates to #signedin
+    passwordForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      localStorage.setItem('youtubePfp', 'blue_avatar.png');
+      localStorage.setItem('userEmail', emailInput.value.trim());
+      localStorage.setItem('isLoggedIn', 'true');
+
+      window.location.hash = 'signedin';
+    });
+
+    // Fake Subscribe Button Logic
+    subBtn.addEventListener('click', function() {
+      isSubscribed = !isSubscribed;
+      if (isSubscribed) {
+        subBtn.classList.add('subscribed');
+        subBtn.innerHTML = '<span>Subscribed</span>';
+        subCount.textContent = '10,421,891 subscribers';
+      } else {
+        subBtn.classList.remove('subscribed');
+        subBtn.innerHTML = '<span>Subscribe</span>';
+        subCount.textContent = '10,421,890 subscribers';
+      }
+    });
+
+    signOutBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('isLoggedIn');
+      window.location.hash = '';
+    });
+
+    backBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.hash = '';
+    });
+
+    diffAccountLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.hash = '';
+    });
+
+    window.addEventListener('hashchange', handleRouting);
+    handleRouting();
+  });
+</script>
+
+</body>
+</html>
