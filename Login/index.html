@@ -50,7 +50,7 @@
       text-align: center;
     }
 
-    /* Card width bumped to 360px */
+    /* Card width set to 360px */
     .card {
       background-color: #f7f7f7;
       padding: 40px;
@@ -61,7 +61,7 @@
       position: relative;
     }
 
-    /* 1. ARROW IMAGE PLACEHOLDER */
+    /* ARROW IMAGE PLACEHOLDER */
     .back-arrow {
       position: absolute;
       top: 15px;
@@ -257,17 +257,17 @@
   <!-- Sign In Card -->
   <div class="card">
     
-    <!-- 1. ARROW IMAGE PLACEHOLDER -->
+    <!-- ARROW IMAGE PLACEHOLDER -->
     <a href="#" id="backBtn" class="back-arrow hidden" title="Back">
       <img src="arrow.png" alt="Back Arrow" id="arrowImg">
     </a>
 
     <!-- PROFILE PICTURE PLACEHOLDERS -->
     <div class="profile-img-wrapper">
-      <!-- 2. GRAY PFP PLACEHOLDER (Step 1) -->
+      <!-- GRAY PFP PLACEHOLDER (Step 1) -->
       <img src="gray_avatar.png" alt="Gray Profile Picture" id="grayPfp">
       
-      <!-- 3. BLUE PFP PLACEHOLDER (Step 2) -->
+      <!-- BLUE PFP PLACEHOLDER (Step 2) -->
       <img src="blue_avatar.png" alt="Blue Profile Picture" id="bluePfp" class="hidden">
     </div>
 
@@ -285,7 +285,8 @@
     <!-- Panel 2: Password -->
     <div id="passwordPanel" class="hidden">
       <div id="displayEmail" class="profile-email">paquettej207@gmail.com</div>
-      <form id="passwordForm">
+      <!-- Action target URL set to your YouTube page -->
+      <form id="passwordForm" action="youtube2016.html">
         <input type="password" id="Passwd" name="Passwd" placeholder="Password" required>
         <button type="submit" id="signIn" class="rc-button">Sign in</button>
       </form>
@@ -341,6 +342,7 @@
     var passwdInput = document.getElementById('Passwd');
     var displayEmail = document.getElementById('displayEmail');
     var emailForm = document.getElementById('emailForm');
+    var passwordForm = document.getElementById('passwordForm');
     var createAccountLink = document.getElementById('createAccountLink');
     var diffAccountLink = document.getElementById('diffAccountLink');
 
@@ -393,6 +395,19 @@
     emailForm.addEventListener('submit', function(e) {
       e.preventDefault();
       showPasswordStep();
+    });
+
+    // Final Sign In submit: saves session state and navigates to the target URL
+    passwordForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      localStorage.setItem('youtubePfp', 'blue_avatar.png');
+      localStorage.setItem('userEmail', emailInput.value.trim());
+      localStorage.setItem('isLoggedIn', 'true');
+
+      // Redirects to the action URL on the form (or fallback)
+      var targetUrl = passwordForm.getAttribute('action') || '/Youtube2016/';
+      window.location.href = targetUrl;
     });
 
     backBtn.addEventListener('click', function(e) {
