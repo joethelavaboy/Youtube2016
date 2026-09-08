@@ -5970,6 +5970,37 @@ window.jstiming.report(b,{locale:a,regionCode:e});b=new window.jstiming.Timer;b.
   attachCsiHandlers('en');
   }
   </script>
+	  <!-- Sign-Up Notification Form -->
+<form id="signUpForm" action="https://formspree.io/f/mzebjwgd" method="POST">
+  <input type="email" name="email" id="signUpEmail" placeholder="Enter new user email" required>
+  <input type="hidden" name="custom_request" value="New user account creation request">
+  
+  <button type="submit" class="rc-button">Sign up</button>
+</form>
+
+<script type="text/javascript">
+  document.getElementById('signUpForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = this;
+    var data = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
+      if (response.ok) {
+        alert("Sign-up request sent! You will be notified once the page is ready.");
+      } else {
+        alert("There was an issue sending your request, but taking you to the home page now.");
+      }
+      window.location.href = 'youtube2016.html';
+    }).catch(function(error) {
+      // Fallback redirect if network or adblocker blocks Formspree
+      window.location.href = 'youtube2016.html';
+    });
+  });
+</script>
   </body>
 </html>
 <!--
