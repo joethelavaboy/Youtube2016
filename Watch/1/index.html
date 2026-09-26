@@ -217,22 +217,34 @@ Loading...
 
 
     </div>
-
-    <div id="player-api" class="player-width player-height off-screen-target player-api" tabindex="-1">
+<div id="player-api" class="player-width player-height off-screen-target player-api" tabindex="-1">
   <video 
     id="main-html-player" 
     class="html5-main-video" 
     controls 
+    crossorigin="anonymous"
     preload="metadata" 
-    poster="https://web.archive.org/web/20160904121338im_/https://i.ytimg.com/vi/UYxpX3N20qU/maxresdefault.jpg" 
-    style="width: 100%; height: 100%; background-color: #000; object-fit: contain;">
+    poster="https://joethelavaboy.github.io/Videos/1/poster.jpg" 
+    style="width: 100%; height: 100%; background-color: #000; object-fit: contain; position: relative; z-index: 10000; pointer-events: auto;">
     
-    <source src="https://web.archive.org/web/20160904121338/https://r3---sn-n4v7sn7l.googlevideo.com/videoplayback?id=o-AERgDUSl9fbvAW1fR9oMbbN3gmq-gbZz_024Q3B2ykWj&itag=137" type="video/mp4">
+    <source src="https://joethelavaboy.github.io/Youtube2016/Videos/1/videoplayback.mp4" type="video/mp4">
     
     Your browser does not support the HTML5 video tag.
   </video>
-</div>
 
+  <script>
+    // Double-click shortcut to force browser fullscreen API if native button is restricted
+    document.getElementById('main-html-player').addEventListener('dblclick', function() {
+      if (this.requestFullscreen) {
+        this.requestFullscreen();
+      } else if (this.webkitRequestFullscreen) {
+        this.webkitRequestFullscreen();
+      } else if (this.msRequestFullscreen) {
+        this.msRequestFullscreen();
+      }
+    });
+  </script>
+</div>
 
     <div id="watch-queue-mole" class="video-mole mole-collapsed hid"><div id="watch-queue" class="watch-playlist player-height"><div class="main-content"><div class="watch-queue-header"><div class="watch-queue-info"><div class="watch-queue-info-icon"><span class="tv-queue-list-icon yt-sprite"></span></div><h3 class="watch-queue-title">Watch Queue</h3><h3 class="tv-queue-title">Queue</h3><span class="tv-queue-details"></span></div><div class="watch-queue-control-bar control-bar-button"><div class="watch-queue-mole-info"><div class="watch-queue-control-bar-icon"><span class="watch-queue-icon yt-sprite"></span></div><div class="watch-queue-title-container"><span class="watch-queue-count"></span><span class="watch-queue-title">Watch Queue</span><span class="tv-queue-title">Queue</span></div></div>  <span class="dark-overflow-action-menu">
     
